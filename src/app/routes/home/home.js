@@ -14,5 +14,4 @@ angular.module('routes')
   })
   .controller('HomeCtrl', function(){
     var vm = this;
-    console.log('HELLO')
   })

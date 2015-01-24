@@ -1,13 +1,11 @@
 'use strict';
 angular.module('routes', [
-  // 'core',
-  // 'models',
-  // 'forms',
-  // 'useCases',
+  'core',
   'ui.router'
 ]).constant('ROUTESURL', 'app/routes/')
   .constant('URLMAP', {
-    'home' : '/'
+    'home'  : '/',
+    'search': 'search'
   })
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
