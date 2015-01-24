@@ -19,5 +19,5 @@ gulp.task('default', ['clean'], function () {
 
 gulp.task('deploy', function () {
     return gulp.src('./dist/**/*')
-        .pipe(deploy(options));
+        .pipe(deploy());
 });
