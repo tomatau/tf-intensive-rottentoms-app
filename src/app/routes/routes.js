@@ -1,6 +1,7 @@
 'use strict';
 angular.module('routes', [
   'core',
+  'modules',
   'ui.router'
 ]).constant('ROUTESURL', 'app/routes/')
   .constant('URLMAP', {

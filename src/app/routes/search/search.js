@@ -12,6 +12,11 @@ angular.module('routes')
         controller: 'SearchCtrl'
       });
   })
-  .controller('SearchCtrl', function(){
+  .controller('SearchCtrl', function(searchMovies){
     var vm = this;
+    console.log(searchMovies)
+    searchMovies('Jaws')
+      .then(function(r){
+        console.log('complete', r)
+      })
   })

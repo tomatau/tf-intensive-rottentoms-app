@@ -9,6 +9,7 @@ angular.module('navbar', [
   ){
     return {
       scope: {
+        // worth adding a brand option here but not important
         navigation: '='
       },
       templateUrl: NAVBARURL + 'navbar.tmpl.html',
