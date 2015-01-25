@@ -29,12 +29,16 @@ angular.module('routes', [
   })
   .run(function(globalResolve, $rootScope, User, $state){
     // Authentication Solution
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams){
-      if (!toState.publicRoute) {
-        globalResolve.then(function(){
-          if (User.get('isAdmin') != true )
-            $state.transitionTo('root.signin')
-        })
-      }
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      if (toState.publicRoute) { return true }
+      event.preventDefault();
+      globalResolve.then(function(){
+        if (User.get('isAdmin') != true )
+          $state.transitionTo('root.signin')
+        else
+          $state.transitionTo(toState.name, toParams, { notify: false }).then(function(){
+            $rootScope.$broadcast('$stateChangeSuccess', toState, toParams, fromState, fromParams)
+          })
+      })
     })
   })
