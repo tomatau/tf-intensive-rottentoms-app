@@ -6,11 +6,12 @@ angular.module('routes')
     ROUTESURL
   ){
     $stateProvider
-      .state('search', {
+      .state('root.search', {
         url: URLMAP.search,
         templateUrl: ROUTESURL + 'search/search.tmpl.html',
         controllerAs: 'search',
-        controller: 'SearchCtrl'
+        controller: 'SearchCtrl',
+        resolve: {},
       });
   })
   .controller('SearchCtrl', function(

@@ -4,4 +4,9 @@ angular.module('core', [
     'ngAnimate',
     'ngSanitize'
   ])
-  .constant('COREURL', 'app/core/');
+  .constant('COREURL', 'app/core/')
+  .config(function(iocMapProvider){
+    iocMapProvider.map({
+      'userGateway': 'lsUserGateway'
+    })
+  });

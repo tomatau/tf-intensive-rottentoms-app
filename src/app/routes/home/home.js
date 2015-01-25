@@ -6,10 +6,16 @@ angular.module('routes')
     ROUTESURL
   ){
     $stateProvider
-      .state('home', {
+      .state('root.home', {
         url: URLMAP.home,
         templateUrl: ROUTESURL + 'home/home.tmpl.html',
-        controller: 'HomeCtrl'
+        controller: 'HomeCtrl',
+        publicRoute: true,
+        resolve: {
+          thing: function(){
+            console.log('home resolv')
+          }
+        }
       });
   })
   .controller('HomeCtrl', function(){

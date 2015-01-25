@@ -16,8 +16,7 @@ angular.module('search')
   .constant('API_KEY', 'nd3uzzypjhqxjqhujpqukdsu')
   .constant('SEARCH_ENDPOINT', 'http://api.rottentomatoes.com/api/public/v1.0/movies.json')
 
-
-  .factory('moviesGateway', function(
+  .factory('httpMoviesGateway', function(
     $http,
     API_KEY,
     SEARCH_ENDPOINT

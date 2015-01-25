@@ -22,7 +22,7 @@ angular.module('core')
       }
 
       // Add static properties to the constructor function, if supplied.
-      _.extend(child, parent, staticProps);
+      _.assign(child, parent, staticProps);
 
       // Set the prototype chain to inherit from `parent`, without calling
       // `parent`'s constructor function.
@@ -32,7 +32,7 @@ angular.module('core')
 
       // Add prototype properties (instance properties) to the subclass,
       // if supplied.
-      if (protoProps) _.extend(child.prototype, protoProps);
+      if (protoProps) _.assign(child.prototype, protoProps);
 
       // Set a convenience property in case the parent's prototype is needed
       // later.
