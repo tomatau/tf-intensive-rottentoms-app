@@ -1,0 +1,81 @@
+<form name="searchForm" ng-submit="form.submit()" novalidate>
+    <fieldset class="form-group required">
+        <label for="Keyword" class="control-label">
+            Search:
+        </label>
+        <input type="text" class="form-control"
+            ng-model="form.entity.keyword"
+            name="keyword"
+            id="keyword"
+            ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 200, 'blur': 0 } }"
+            required
+        >
+    </fieldset>
+</form>
+    <!--
+    <fieldset ng-if="form.entity.id != null"  class="form-group required">
+        <label for="id" class="control-label">Course Id</label>
+        <input ng-if="form.entity.id != null"
+            ng-model="form.entity.id"
+            name="id"
+            type="number"
+            disabled="disabled"
+            class="form-control">
+    </fieldset>
+    <fieldset class="form-group required">
+        <label for="name" class="control-label">
+            Course Name
+        </label>
+        <input ng-model="form.entity.name"
+            id="courseName"
+            type="text"
+            name="name"
+            ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 200, 'blur': 0 } }"
+            required
+            ng-pattern="/[A-Z]{3,}-\d{3,3}$/"
+            class="form-control">
+            <div ng-messages="courseForm.name.$error"
+                ng-if="courseForm.$submitted || courseForm.name.$touched">
+                <p ng-message="required" class="text-danger">
+                    A course name is required
+                </p>
+                <p ng-message="minlength" class="text-danger">
+                    Course names must be 4 characters or more
+                </p>
+                <p ng-message="pattern" class="text-danger">
+                    Course name format should be <em>ABC-123</em>
+                </p>
+            </div>
+    </fieldset>
+    <fieldset  class="form-group required">
+        <label for="version"
+            class="control-label">Version</label>
+        <input ng-model="form.entity.version"
+            ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 200, 'blur': 0 } }"
+            type="number"
+            name="version"
+            required
+            class="form-control">
+            <div ng-messages="courseForm.version.$error"
+                ng-if="courseForm.$submitted || courseForm.version.$touched">
+                <p ng-message="required" class="text-danger">
+                    A course version is required
+                </p>
+                <p ng-message="number" class="text-danger">
+                    Version must be a number
+                </p>
+            </div>
+    </fieldset>
+    <div ng-messages="courseForm.$error"
+        ng-if="courseForm.$submitted || courseForm.version.$touched">
+        <p ng-message="notUnique" class="text-danger">
+            You must supply a unique course name and version
+        </p>
+    </div>
+    <div class="controls">
+        <button ng-disabled="courseForm.$invalid"
+            type="submit" class="btn btn-success">
+            Create
+        </button>
+    </div>
+     -->

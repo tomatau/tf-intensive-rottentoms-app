@@ -1,3 +1,13 @@
 <div class="container">
+<search-form
+  entity="search.entity"
+  submit-fn="search.submitSearch"
+></search-form>
   <h3>Search</h3>
+
+  <!-- doesn't update: JavaScript pass by sharing on values -->
+  <pre>{{ search.searchTotal | json}}</pre>
+  <!-- these both update: objects keep reference -->
+  <pre>{{ search.pagination | json}}</pre>
+  <pre>{{ search.searchResults | json}}</pre>
 </div>
