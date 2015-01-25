@@ -1,4 +1,6 @@
 'use strict';
 angular.module('modules', [
-  'search'
+  'search',
+  'navbar',
+  'login'
 ])

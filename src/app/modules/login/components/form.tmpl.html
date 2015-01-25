@@ -1,0 +1,32 @@
+<form name="signinForm" ng-submit="form.submit(form.entity)" novalidate>
+    <fieldset class="form-group required">
+        <label for="keyword" class="control-label">
+            User Name:
+        </label>
+        <input type="text" class="form-control"
+            ng-model="form.entity.username"
+            name="username"
+            id="username"
+            ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 200, 'blur': 0 } }"
+            required
+        >
+    </fieldset>
+    <fieldset class="form-group required">
+        <label for="Keyword" class="control-label">
+            Password:
+        </label>
+        <input type="password" class="form-control"
+            ng-model="form.entity.password"
+            name="password"
+            id="password"
+            ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 200, 'blur': 0 } }"
+            required
+        >
+    </fieldset>
+    <div class="controls">
+        <button ng-disabled="signinForm.$invalid"
+            type="submit" class="btn btn-success">
+            Save
+        </button>
+    </div>
+</form>

@@ -2,7 +2,7 @@
 // service for creating form directives... similar to 'extending a base form'
 // automatically registers validators for the form as a whole
 angular.module('core')
-  .factory('formBuilder', function() {
+  .factory('formBuilder', function($q) {
     return function(formDDO) {
       return angular.extend({}, {
         scope: {
@@ -19,26 +19,32 @@ angular.module('core')
           var original = this.original = angular.copy(this.entity);
 
           this.submit = function() {
-            this.submitFn()()
+            $q.when(this.submitFn()(this.entity))
               .then(function() {
                 $scope[formDDO.formName].$setPristine();
                 $scope[formDDO.formName].$setUntouched();
               });
           };
 
+          // Automatic validators that supply the current entity as a whole and the original
+          // this is very useful for methods such as 'isUnique' when checking on client
           $scope.$watchCollection('form.entity', function validate(entity) {
+            // entity changed
+            // is it pristine?
             if ($scope[formDDO.formName].$pristine) {
+              // no id, so creating, so set defaults (first load)
               if (entity.id == null)
                 angular.extend($scope.form.entity, formDDO.defaults);
               return true;
             }
+            // not pristine, check each validator function
             angular.forEach(formDDO.validators, function(fn, name) {
               $scope[formDDO.formName].$setValidity(name,
                 fn(entity, original)
               );
             });
           });
-
+          // doesn't work as expected...
           this.modelOptions = {
             updateOn: 'default blur',
             debounce: {

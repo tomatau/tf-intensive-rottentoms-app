@@ -2,12 +2,11 @@ angular.module('config')
   .constant('LOCAL_CONFIG', {
     env: 'DEV',
   })
-  // faking login step
-  .constant('isAdmin', true)
   .config(function(){
     // add some personal prefs for dev here too.
   })
-  .run(function(){
+  .run(function(User){
     // add a bunch of helper functions I like to use personally for dev
+    // User.set('isAdmin', true); // should be done through an action!
   })
-  // Whatever that won't be shared!
+  // Anything else that we don't want shared in the repository
