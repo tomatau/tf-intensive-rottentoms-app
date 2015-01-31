@@ -37,6 +37,7 @@ angular.module('routes', [
           $state.transitionTo('root.signin')
         else
           $state.transitionTo(toState.name, toParams, { notify: false }).then(function(){
+            // must broadcast here as uiRouter views expect this event
             $rootScope.$broadcast('$stateChangeSuccess', toState, toParams, fromState, fromParams)
           })
       })

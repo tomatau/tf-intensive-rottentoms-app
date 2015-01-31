@@ -24,6 +24,6 @@ angular.module('routes')
     vm.pagination = PaginatedMovies.pagination;
     vm.entity = { keyword: "Jaws" }
     vm.submitSearch = function(){
-      return searchMovies(vm.entity.keyword, { page: 2 })
+      return searchMovies(vm.entity.keyword, { page: 1 })
     }
   })

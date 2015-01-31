@@ -6,8 +6,7 @@ angular.module('core')
     return function fetchUserFromClient(){
       return userGateway.getFromClient()
         .then(function(user){
-          if (user != null)
-            User.set(user)
+          if (user != null) User.set(user)
         })
     }
   })

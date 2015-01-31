@@ -3,7 +3,7 @@
 // automatically registers validators for the form as a whole
 angular.module('core')
   .factory('formBuilder', function($q) {
-    return function(formDDO) {
+    return function(formDDO) { // form Directive Definition Object
       return angular.extend({}, {
         scope: {
           entity: '=entity',
@@ -13,8 +13,7 @@ angular.module('core')
         bindToController: true,
         controllerAs: 'form',
         controller: function($scope) {
-          if (this.entity == null)
-            throw new Error('Form requires entity');
+          if (this.entity == null) throw new Error('Form requires entity');
 
           var original = this.original = angular.copy(this.entity);
 
@@ -44,7 +43,7 @@ angular.module('core')
               );
             });
           });
-          // doesn't work as expected...
+          // these don't work as expected...
           this.modelOptions = {
             updateOn: 'default blur',
             debounce: {

@@ -4,10 +4,28 @@
   submit-fn="search.submitSearch"
 ></search-form>
   <h3>Search</h3>
+  <table class="table table-striped table-hover" ng-if="search.searchResults.length">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Rating</th>
+        <th>Runtime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="movie in search.searchResults track by movie.id">
+        <td>{{ :: movie.title }}</td>
+        <td>{{ :: movie.year }}</td>
+        <td>{{ :: movie.mpaa_rating }}</td>
+        <td>{{ :: movie.runtime }}</td>
+      </tr>
+    </tbody>
+  </table>
 
   <!-- doesn't update: JavaScript pass by sharing on values -->
   <pre>{{ search.searchTotal | json}}</pre>
   <!-- these both update: objects keep reference -->
   <pre>{{ search.pagination | json}}</pre>
-  <pre>{{ search.searchResults | json}}</pre>
+  <!-- <pre>{{ search.searchResults | json}}</pre> -->
 </div>
