@@ -2,11 +2,13 @@ angular.module('core', [
     'ngCookies',
     'ngTouch',
     'ngAnimate',
-    'ngSanitize'
+    'ngSanitize',
+    'angular-loading-bar'
   ])
   .constant('COREURL', 'app/core/')
-  .config(function(iocMapProvider){
+  .config(function(iocMapProvider, cfpLoadingBarProvider){
     iocMapProvider.map({
       'userGateway': 'lsUserGateway'
     })
+    cfpLoadingBarProvider.includeSpinner = false;
   });

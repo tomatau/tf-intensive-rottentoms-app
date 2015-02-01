@@ -12,9 +12,14 @@ angular.module('routes')
         controller: 'SigninCtrl',
         controllerAs: 'signin',
         publicRoute: true,
+        resolve: {
+          redir: function(User, $location){
+            if (User.isLoggedIn()) $location.path('/')
+          }
+        }
       });
   })
-  .controller('SigninCtrl', function(login){
+  .controller('SigninCtrl', function(login, $state){
     var vm = this;
     // if editing, worth making a copy now or one way binding
     // this is where it can get tricky
@@ -22,5 +27,8 @@ angular.module('routes')
     vm.submitLogin = function(entity){
       // entity === vm.user;
       return login(vm.user)
+        .then(function(){
+          $state.go('root.home')
+        })
     }
   })

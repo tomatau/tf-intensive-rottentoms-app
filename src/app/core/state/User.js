@@ -3,7 +3,10 @@ angular.module('core')
     var User = BaseEntity.extend({
       constructor: function() {
         BaseEntity.apply(this, arguments);
-        this.set('isAdmin', false);
+        this.set('isLoggedIn', false);
+      },
+      isLoggedIn: function(){
+        return this.get('isLoggedIn');
       }
     })
     return new User();

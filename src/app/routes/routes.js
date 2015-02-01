@@ -23,13 +23,14 @@ angular.module('routes', [
     //  i.e. doesn't happen after each route change
     return $q.all([fetchUserFromClient()])
   })
-  .run(function(globalResolve, $rootScope, User, $state, $stateParams){
+  .run(function(globalResolve, $rootScope, User, $state, $stateParams, cfpLoadingBar){
     // Authentication Solution
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      cfpLoadingBar.start();
       if (toState.publicRoute) { return true }
       event.preventDefault();
       globalResolve.then(function(){
-        if (User.get('isAdmin') != true )
+        if (User.isLoggedIn() != true )
           $state.transitionTo('root.signin')
         else
           $state.transitionTo(toState.name, toParams, { notify: false }).then(function(){
@@ -37,6 +38,10 @@ angular.module('routes', [
             $rootScope.$broadcast('$stateChangeSuccess', toState, toParams, fromState, fromParams)
           })
       })
+    })
+
+    $rootScope.$on('$stateChangeSuccess', function(){
+      cfpLoadingBar.complete();
     })
 
     $rootScope.$on('$stateChangeError',

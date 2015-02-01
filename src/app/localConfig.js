@@ -7,6 +7,6 @@ angular.module('config')
   })
   .run(function(User){
     // add a bunch of helper functions I like to use personally for dev
-    // User.set('isAdmin', true); // should be done through an action!
+    // User.set('isLoggedIn', true); // should be done through an action!
   })
   // Anything else that we don't want shared in the repository
