@@ -14,6 +14,7 @@ angular.module('tfIntensiveRottentomsApp', [
       console.info('Current Local Config:', LOCAL_CONFIG)
 
     $rootScope.user = User.get();
+    $rootScope.navigation = NAVIGATION.guestNav;
     // suitable watch, keep logic in view - although the directive still watches
     $rootScope.$watch('user.isLoggedIn', function(isLoggedIn){
       $rootScope.navigation = (isLoggedIn) ? NAVIGATION.userNav : NAVIGATION.guestNav;
