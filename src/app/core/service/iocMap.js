@@ -9,7 +9,5 @@ angular.module('core')
         $provide.factory(target, injectFn);
       });
     }
-    this.$get = [function(){
-      return {}
-    }];
+    this.$get = function(){};
   });

@@ -12,7 +12,7 @@ angular.module('core')
         transclude: true,
         bindToController: true,
         controllerAs: 'form',
-        controller: function($scope) {
+        controller: ['$scope', function($scope) {
           if (this.entity == null) throw new Error('Form requires entity');
 
           var original = this.original = angular.copy(this.entity);
@@ -51,7 +51,7 @@ angular.module('core')
               'blur': 0
             }
           };
-        }
+        }]
       }, formDDO);
     };
   });
