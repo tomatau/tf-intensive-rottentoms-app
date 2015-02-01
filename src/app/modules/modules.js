@@ -2,5 +2,6 @@
 angular.module('modules', [
   'search',
   'navbar',
-  'login'
+  'login',
+  'example'
 ])
