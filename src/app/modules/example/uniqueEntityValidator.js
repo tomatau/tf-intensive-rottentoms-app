@@ -5,7 +5,7 @@ angular.module('example')
     return { get: function(){ return [] } };
   })
   // This is an example validator that checks a user name and email combo is unique
-  .factory('uniqueNameAndEmailValidator', function(CourseList) {
+  .factory('uniqueNameAndEmailValidator', function(UserList) {
     return function(entity, original) {
       var valid = false,
         nameExists = _.where(UserList.get(), {
