@@ -1,7 +1,7 @@
 <div class="navbar navbar-default" role="navigation" bs-navbar>
   <div class="navbar-header">
     <a class="navbar-brand"
-      ui-sref="{{::navbar.brand.path}}"
+      ui-sref="{{::navbar.brand.name}}"
     >
       Angular Intensive
     </a>
@@ -9,7 +9,7 @@
   <ul class="nav navbar-nav">
     <li ng-repeat="nav in navbar.navigation"
        ui-sref-active="active">
-      <a ui-sref="{{::nav.path}}">
+      <a ui-sref="{{::nav.name}}">
         {{::nav.label}}
       </a>
     </li>

@@ -4,22 +4,18 @@ angular.module('routes', [
   'modules',
   'ui.router'
 ]).constant('ROUTESURL', 'app/routes/')
-  .constant('URLMAP', {
+  .constant('URLMAP', { // make sure they have a leading slash
     'home'  : '/',
-    'search': 'search'
+    'search': '/search',
+    'signin': '/login'
   })
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
       .state('root', {
         abstract: true,
-        template: '<ui-view></ui-view>',
-        // resolve: {
-        //   appResolve: function(globalResolve){
-        //     console.log('app resolve')
-        //     return globalResolve;
-        //   }
-        // }
+        template: '<ui-view></ui-view>'
       })
+      // $locationProvider.hashPrefix('!');
     $urlRouterProvider.otherwise('/');
   })
   .factory('globalResolve', function($q, fetchUserFromClient){
@@ -27,7 +23,7 @@ angular.module('routes', [
     //  i.e. doesn't happen after each route change
     return $q.all([fetchUserFromClient()])
   })
-  .run(function(globalResolve, $rootScope, User, $state){
+  .run(function(globalResolve, $rootScope, User, $state, $stateParams){
     // Authentication Solution
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
       if (toState.publicRoute) { return true }
@@ -42,4 +38,9 @@ angular.module('routes', [
           })
       })
     })
+
+    $rootScope.$on('$stateChangeError',
+      function(event, toState, toParams, fromState, fromParams, error){
+        console.error(error)
+      });
   })

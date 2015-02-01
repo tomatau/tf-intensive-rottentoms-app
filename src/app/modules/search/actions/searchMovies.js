@@ -7,7 +7,7 @@ angular.module('search')
   ){
     // could use a base action here, then decorate with loading bar calls/analytics/etc..
     return function(keywords, pagination){
-      pagination = _.extend(pagination || {}, paginationDefaults);
+      pagination = _.defaults(pagination || {}, paginationDefaults);
       return moviesGateway.search(keywords, pagination)
         .then(function(response){
           PaginatedMovies.set(response.data.movies)

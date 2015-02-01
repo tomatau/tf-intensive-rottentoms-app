@@ -11,7 +11,7 @@ angular.module('routes')
         templateUrl: ROUTESURL + 'search/search.tmpl.html',
         controllerAs: 'search',
         controller: 'SearchCtrl',
-        resolve: {},
+        resolve: { },
       });
   })
   .controller('SearchCtrl', function(

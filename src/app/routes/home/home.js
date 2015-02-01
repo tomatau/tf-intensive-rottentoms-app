@@ -11,11 +11,7 @@ angular.module('routes')
         templateUrl: ROUTESURL + 'home/home.tmpl.html',
         controller: 'HomeCtrl',
         publicRoute: true,
-        resolve: {
-          thing: function(){
-            console.log('home resolv')
-          }
-        }
+        resolve: { }
       });
   })
   .controller('HomeCtrl', function(){
