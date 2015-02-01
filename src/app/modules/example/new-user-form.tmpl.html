@@ -1,0 +1,68 @@
+<form name="newUserForm" ng-submit="form.submit()" novalidate>
+  <fieldset ng-if="form.entity.id != null"  class="form-group required">
+    <label for="id" class="control-label">User Id</label>
+    <input ng-if="form.entity.id != null"
+        ng-model="form.entity.id"
+        name="id"
+        type="number"
+        disabled="disabled"
+        class="form-control">
+  </fieldset>
+  <fieldset class="form-group required">
+    <label for="name" class="control-label">
+        User Name
+    </label>
+    <input ng-model="form.entity.name"
+        id="userName"
+        type="text"
+        name="name"
+        ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 200, 'blur': 0 } }"
+        required
+        ng-pattern="/[A-Z]{3,}-\d{3,3}$/"
+        class="form-control">
+    <div ng-messages="newUserForm.name.$error"
+        ng-if="newUserForm.$submitted || newUserForm.name.$touched">
+        <p ng-message="required" class="text-danger">
+            A user name is required
+        </p>
+        <p ng-message="minlength" class="text-danger">
+            User names must be 4 characters or more
+        </p>
+        <p ng-message="pattern" class="text-danger">
+            User name format should be <em>ABC-123</em>
+        </p>
+    </div>
+  </fieldset>
+  <fieldset class="form-group required">
+    <label for="name" class="control-label">
+        User Name
+    </label>
+    <input ng-model="form.entity.name"
+        id="userEmail"
+        type="email"
+        name="email"
+        class="form-control"
+        >
+    <div ng-messages="newUserForm.version.$error"
+        ng-if="newUserForm.$submitted || newUserForm.email.$touched">
+        <p ng-message="required" class="text-danger">
+            A user Email is required
+        </p>
+        <p ng-message="email" class="text-danger">
+            The Email must be valid
+        </p>
+    </div>
+  </fieldset>
+  <div ng-messages="newUserForm.$error"
+      ng-if="newUserForm.$submitted || newUserForm.email.$touched">
+      <p ng-message="notUnique" class="text-danger">
+          You must supply a unique user name and email
+      </p>
+  </div>
+  <div class="controls">
+      <button ng-disabled="newUserForm.$invalid"
+          type="submit" class="btn btn-success">
+          Create
+      </button>
+  </div>
+</form>
