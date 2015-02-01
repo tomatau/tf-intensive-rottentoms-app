@@ -26,7 +26,7 @@ angular.module('routes', [
   .run(function(globalResolve, $rootScope, User, $state, $stateParams, cfpLoadingBar){
     // Authentication Solution
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-      cfpLoadingBar.start();
+      // cfpLoadingBar.start();
       if (toState.publicRoute) { return true }
       event.preventDefault();
       globalResolve.then(function(){
@@ -41,7 +41,7 @@ angular.module('routes', [
     })
 
     $rootScope.$on('$stateChangeSuccess', function(){
-      cfpLoadingBar.complete();
+      // cfpLoadingBar.complete();
     })
 
     $rootScope.$on('$stateChangeError',
