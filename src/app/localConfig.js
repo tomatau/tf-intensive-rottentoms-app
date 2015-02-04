@@ -1,3 +1,4 @@
+// This file is nice to be untracked!
 angular.module('config')
   .constant('LOCAL_CONFIG', {
     env: 'DEV',

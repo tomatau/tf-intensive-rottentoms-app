@@ -16,8 +16,10 @@ angular.module('routes')
   })
   .controller('SearchCtrl', function(
     searchMovies,
-    PaginatedMovies
+    PaginatedMovies,
+    $scope
   ){
+    console.log($scope)
     var vm = this;
     vm.searchResults = PaginatedMovies.get();
     vm.searchTotal = PaginatedMovies.total;

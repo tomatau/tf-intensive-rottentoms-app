@@ -1,7 +1,8 @@
 angular.module('core')
   // EXAMPLE:
   // This file is currently unused
-  // would be easy to make different base actions of diff functionality
+  // would be easy to make different base actions each with a type of functionality
+  //  e,g, fetch actions, mutate actions, promise actions,...
   .factory('baseAction', function(
     $q
   ){
