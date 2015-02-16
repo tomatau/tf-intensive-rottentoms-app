@@ -30,14 +30,20 @@ angular.module('core')
 
     _.each([ // lodash Methods
       'assign', // dangerous setter
-      'has',
-      'findKey',
-      'forIn',
-      'isEmpty',
-      'keys',
-      'clone',
-      'pick',
-      'mapValues'
+      ,'defaults'
+      ,'findKey'
+      ,'forIn'
+      ,'has'
+      ,'keys'
+      ,'keysIn'
+      ,'mapValues'
+      ,'merge'
+      ,'omit'
+      ,'pairs'
+      ,'pick'
+      ,'clone'
+      ,'isEmpty'
+      ,'isMatch'
     ], function(method, idx) {
       BaseEntity.prototype[method] = function() {
         var args = Array.prototype.slice.call(arguments, 0);

@@ -27,17 +27,26 @@ angular.module('core')
     };
 
     _.each([ // lodash Methods
-      'where'
-      ,'find'
+      'each'
+      ,'every'
       ,'filter'
-      ,'forEach'
+      ,'find'
+      ,'findWhere'
+      ,'first'
+      ,'includes'
+      ,'indexOf'
+      ,'invoke'
+      ,'pluck'
       ,'map'
       ,'max'
       ,'min'
       ,'pluck'
-      ,'sortBy'
       ,'reject'
       ,'remove'
+      ,'sortBy'
+      ,'sortByAll'
+      ,'union'
+      ,'where'
     ], function(method, idx){
       BaseCollection.prototype[method] = function(){
         var args = Array.prototype.slice.call(arguments, 0);

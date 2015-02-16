@@ -4,9 +4,7 @@
 angular.module('tfIntensiveRottentomsApp', [
     'config', 'core', 'routes', 'navbar'
   ])
-  .run(function(
-    $rootScope, LOCAL_CONFIG, NAVIGATION, User
-  ){
+  .run(function($rootScope, LOCAL_CONFIG, NAVIGATION, User){
     if (LOCAL_CONFIG)// do env specific stuff
       console.info('Current Local Config:', LOCAL_CONFIG)
 
