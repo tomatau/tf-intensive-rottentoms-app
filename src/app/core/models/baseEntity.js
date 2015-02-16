@@ -46,8 +46,8 @@ angular.module('core')
       ,'isMatch'
     ], function(method, idx) {
       BaseEntity.prototype[method] = function() {
-        var args = Array.prototype.slice.call(arguments, 0);
-        return _[method].apply(_, [this.data].concat(args));
+        // var args = Array.prototype.slice.call(arguments, 0);
+        return _[method].apply(_, [this.data].concat(_.values(arguments)));
       }
     });
 
